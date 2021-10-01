@@ -10,7 +10,7 @@ Modules python:
 
 - arcpy
 - pandas
-- win32
+- win32com.client
 
 ## fichiers inclus
 
