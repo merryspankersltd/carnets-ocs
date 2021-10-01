@@ -1,6 +1,6 @@
 [![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
-[![GitLab last commit](https://badgen.net/gitlab/last-commit/merryspankersltd/carnets-ocs/)](https://gitlab.com/merryspankersltd/carnets-ocs/-/commits)
+[![GitHub last commit](https://badgen.net/github/last-commit/merryspankersltd/carnets-ocs/)](https://github.com/merryspankersltd/carnets-ocs/-/commits)
 
 # Carnets OCS
 
