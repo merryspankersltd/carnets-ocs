@@ -2,6 +2,14 @@
 
 Un script python pour automatiser la construction des carnets OCS.
 
+## usage
+
+```Python
+    >>> import dossierspot as spot
+    >>> rap = spot.Report(r'/path/to/depcoms.txt')
+    >>> rap.process()
+    >>>```
+
 ## requires
 
 Le script tourne sous arcgis desktop 10.7, python 2.7.
