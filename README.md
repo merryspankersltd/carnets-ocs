@@ -9,6 +9,8 @@ Le script est lancé à partir d'une boîte à outils arcgis desktop acceptant u
 
 ## usage
 
+Console python
+
 ```Python
 >>> import dossierspot as spot
 >>> rap = spot.Report(r'/path/to/depcoms.txt')
@@ -16,9 +18,17 @@ Le script est lancé à partir d'une boîte à outils arcgis desktop acceptant u
 >>>
 ```
 
+Terminal
+
+```Terminal
+python dossierocs /path/to/depcoms.txt
+```
+
+
+
 ## requires
 
-Le script tourne sous arcgis desktop 10.7, python 2.7.
+Le script tourne sous arcgis desktop >10.7, python 2.7.
 
 Modules python:
 
