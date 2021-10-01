@@ -20,7 +20,7 @@ Console python
 
 Terminal
 
-```Terminal
+```powershell
 python dossierocs /path/to/depcoms.txt
 ```
 
