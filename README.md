@@ -1,6 +1,12 @@
+[![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+[![GitLab last commit](https://badgen.net/gitlab/last-commit/merryspankersltd/carnets-ocs/)](https://gitlab.com/merryspankersltd/carnets-ocs/-/commits)
+
 # Carnets OCS
 
 Un script python pour automatiser la construction des carnets OCS.
+
+Le script est lancé à partir d'une boîte à outils arcgis desktop acceptant un seul contrôle pointant sur un fichier ```depcoms.txt``` qui contient la liste des codes communes à traiter. Le nom du dossier contenant le fichier définit le nom du périmètre dans les pdf produits. Le script peut donc très facilement être lancé en mode batch dans arcgis desktop.
 
 ## usage
 
