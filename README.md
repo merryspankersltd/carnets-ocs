@@ -31,3 +31,7 @@ Dans boîte à outils arcgis desktop, pointer sur le fichier depcoms.txt et lanc
 Le script lit la liste de codes communaux, effectue un ensemble de définition sur la base source OCS et peuple les templates cartographiques et excel avec cet extrait.
 
 Les templates sont exportées en pdf dans le dossier racine sous une arborescence complète.
+
+### usage
+
+todo...
