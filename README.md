@@ -18,7 +18,6 @@ Le script tourne sous arcgis desktop 10.7, python 2.7.
 Modules python:
 
 - arcpy
-- pandas
 - win32com.client
 
 ## fichiers inclus
