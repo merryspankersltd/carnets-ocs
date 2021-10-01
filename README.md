@@ -5,10 +5,11 @@ Un script python pour automatiser la construction des carnets OCS.
 ## usage
 
 ```Python
-    >>> import dossierspot as spot
-    >>> rap = spot.Report(r'/path/to/depcoms.txt')
-    >>> rap.process()
-    >>>```
+>>> import dossierspot as spot
+>>> rap = spot.Report(r'/path/to/depcoms.txt')
+>>> rap.process()
+>>>
+```
 
 ## requires
 
