@@ -7,6 +7,10 @@ Un script python pour automatiser la construction des carnets OCS.
 
 Le script est lancé à partir d'une boîte à outils arcgis desktop acceptant un seul contrôle pointant sur un fichier ```depcoms.txt``` qui contient la liste des codes communes à traiter. Le nom du dossier contenant le fichier définit le nom du périmètre dans les pdf produits. Le script peut donc très facilement être lancé en mode batch dans arcgis desktop.
 
+## avertissement
+
+La source de données mos est privée et accessible uniquement localement. La source du script doit être modifiée pour pointer sur une ressource accessible au script.
+
 ## usage
 
 Console python
