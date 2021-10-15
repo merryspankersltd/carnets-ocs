@@ -11,6 +11,10 @@ Le script est lancé à partir d'une boîte à outils arcgis desktop acceptant u
 
 La source de données mos est privée et accessible uniquement localement. La source du script doit être modifiée pour pointer sur une ressource accessible au script.
 
+```Python
+MOS_PATH = r'J:\Etudes\laufma\Python26\site-packages\mezcal\data\mos.gdb\mos_urba3_2010_2020'
+```
+
 ## usage
 
 Console python
