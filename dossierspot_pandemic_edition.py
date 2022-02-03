@@ -1,16 +1,16 @@
-# -*- coding: iso-8859-1 -*-
+# -*- coding: UTF-8 -*-
 
 '''
 
     dossierspot
     ===========
 
-        Construit un dossier spot standard � partir d'une liste de depcoms
+        Construit un dossier spot standard à partir d'une liste de depcoms
 
-        Le rapport est export� � l'emplacement du fichier depcoms.
-        les fichiers interm�diaires sont class�s dans des sous-dossiers
+        Le rapport est exporté à l'emplacement du fichier depcoms.
+        les fichiers intermédiaires sont classés dans des sous-dossiers
         par extention.
-        Le nommage est d�fini par le nom du dossier parent
+        Le nommage est défini par le nom du dossier parent
 
     usage:
     ------
@@ -23,8 +23,8 @@
 
 # constants
 # =========
-MOS_PATH = r'J:\Etudes\laufma\Python26\site-packages\mezcal\data\mos.gdb\mos_urba3_2010_2020'
-TPL_PATH = r'J:\Etudes\laufma\Python26\site-packages\mezcal\templates\pandemic_edition'
+MOS_PATH = r'\\srvdata\3d\Transferts\multidate_MOS2010_2020.gdb\multidate_MOS2010_2020'
+TPL_PATH = r'\\urbalyon.dom\datas\Donnees_Urbaines\Etudes\laufma\Python26\site-packages\mezcal\templates\pandemic_edition'
 DEPCOM_FLD = 'code_insee'
 COD10_NIV2 = 'cod_10niv2'
 COD20_NIV2 = 'cod_20niv2'
@@ -34,6 +34,7 @@ import os
 import shutil
 import arcpy
 import win32com.client as win32
+import agol_creds as creds
 
 
 def naming(path_to_depcoms):
@@ -108,7 +109,7 @@ class Page(object):
         # path to pdf
         self.pdf = self.get_path(pdf=True)
         # naming ('st_00', ..., 'st_15', 'data'...)
-        self.name = '_'.join(os.path.basename(self.path).split('_')[:-1])
+        self.name = '_'.join(os.path.split(self.template)[1].split('_')[:-1])
         # processed ?
         self.processed = False
 
@@ -199,7 +200,7 @@ class Page(object):
             tune evo mxd
         """
         # get mxd, year of origin, year of end
-        yro, yre = os.path.basename(self.path).split('_')[1:-1]
+        yro, yre = os.path.basename(self.path).split('_')[1:3]
         mxd = arcpy.mapping.MapDocument(self.path)
         # set title
         mxd.title = self.title
@@ -343,10 +344,6 @@ class Report(object):
     # data sources are already set in templates
     # they must be adjusted manually before anything
 
-    #   - templates root folder
-    tpl_root = (
-        ur'J:\Etudes\laufma\Python26\site-packages\mezcal\templates\pandemic_edition')
-
     #   - templates
     templates = [
         ur'st_10_tpl.mxd',
@@ -370,6 +367,9 @@ class Report(object):
             :return: report object, will be processed if process() is triggered
             :rtype: Report instance
         """
+        # connect to AGOL -> /!\ not working
+        # arcpy.SignInToPortal_server(creds.user, creds.password, "")
+        # arcpy.AddMessage("welcome to AGOL, " + creds.user)
         # initiate depcoms
         self.depcoms = Depcoms(depcoms_path)
         # sets paths
@@ -380,7 +380,7 @@ class Report(object):
         self.allpages = [
             Page(
                 self.source, self.depcoms,
-                os.path.join(self.tpl_root, template))
+                os.path.join(TPL_PATH, template))
             for template in self.templates]
 
     def process(self, *pages):
@@ -406,6 +406,7 @@ class Report(object):
                 'st_10', 'st_20', 'evo_10_20', 'data')
         # process all pages specified in pages param
         for page in self.allpages:
+            arcpy.AddMessage(page.path)
             # filter by pages
             if page.name in pages:
                 print u'\tprocessing {0}...'.format(page.name),
@@ -414,6 +415,7 @@ class Report(object):
         # assemble all in one big pdf
         root, _ = os.path.split(self.depcoms.path)
         self.pdf = os.path.join(root, 'pdf', self.title + '.pdf')
+        arcpy.AddMessage(self.pdf)
         pdfs = [page.pdf for page in self.allpages if page.processed]
         pdfDoc = arcpy.mapping.PDFDocumentCreate(self.pdf)
         for page in pdfs:
